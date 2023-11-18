@@ -20,10 +20,25 @@ const oyuncuDegistir = function(){
     oyuncu2.classList.toggle('player--active');
 }
 
-let geciciSkor=0;
-let aktifOyuncu=0;
-let skorlar =[0,0];
-let oyunBitti = true;
+let geciciSkor,aktifOyuncu,skorlar,oyunBitti;
+
+const baslangic = function(){
+    geciciSkor=0;
+    aktifOyuncu=0;
+    skorlar =[0,0];
+    oyunBitti = true;
+    skor0El.textContent = 0;
+    skor1El.textContent = 0;
+    geciciSkor0El.textContent = 0;
+    geciciSkor1El.textContent = 0;
+    oyuncu1.classList.remove('player--winner');
+    oyuncu2.classList.remove('player--winner');
+    oyuncu1.classList.add('player--active');
+    oyuncu2.classList.remove('player--active');
+}
+
+baslangic();
+
 
 skor0El.textContent = 0;
 skor1El.textContent = 0;
@@ -63,15 +78,4 @@ btnTut.addEventListener('click',function(){
 
 })
 
-btnYeni.addEventListener('click',function(){
-    geciciSkor=0;
-    aktifOyuncu=0;
-    skorlar =[0,0];
-    oyunBitti = true;
-    document.querySelector('#score--0').textContent = 0;
-    document.querySelector('#score--1').textContent = 0;
-    document.querySelector('#current--0').textContent = 0;
-    document.querySelector('#current--1').textContent = 0;
-    oyuncu1.classList.toggle('player--active');
-    oyuncu2.classList.toggle('player--active');
-})
+btnYeni.addEventListener('click',baslangic)
